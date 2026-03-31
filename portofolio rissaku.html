@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michelle Carissa P. - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ================= GLOBAL STYLES & BACKGROUND ================= */
+        :root {
+            --dark-bg: #1a202c;
+            --gold-accent: #d4af37;
+            --brass-text: #8a6d00;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-bg);
+            color: #e2e8f0;
+            overflow-x: hidden;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .site-wrapper {
+            position: relative;
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MECHANICAL GEARS BACKGROUND ANIMATION */
+        .gears-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .gear {
+            position: absolute;
+            background-color: transparent;
+            border: 5px solid rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: spin-gears 10s linear infinite;
+        }
+
+        @keyframes spin-gears {
+            to { transform: rotate(360deg); }
+        }
+
+        /* ================= SITE HEADER & NAV ================= */
+        .site-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 20px 0;
+            z-index: 100;
+            background-color: rgba(10, 10, 10, 0.8);
+            border-bottom: 2px solid var(--gold-accent);
+            position: sticky;
+            top: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+
+        .nav-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 0 10px;
+        }
+
+        .nav-btn {
+            background-color: transparent;
+            border: 1px solid var(--gold-accent);
+            color: #cbd5e1;
+            padding: 10px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            pointer-events: auto;
+        }
+
+        .nav-btn:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+            color: #fff;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .nav-btn.active {
+            background-color: var(--gold-accent);
+            color: #1a1a1a;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+        }
+
+        /* ================= MAIN CONTENT AREA ================= */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            padding: 40px 20px;
+        }
+
+        .content-page {
+            background: radial-gradient(circle, #f5ecd5 0%, #dfcfa6 100%);
+            padding: 50px;
+            border-radius: 12px;
+            width: 85%;
+            max-width: 1200px;
+            position: relative;
+            color: #1a1a1a; 
+            border: 10px solid;
+            border-image: linear-gradient(45deg, #8a6d00 0%, #d4af37 50%, #8a6d00 100%) 1;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            display: none; 
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .content-page.active {
+            display: block; 
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 5px;
+            letter-spacing: 2px;
+            color: #1a1a1a;
+        }
+
+        .section-subtitle {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--brass-text);
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-subtitle::before, .section-subtitle::after {
+            content: '';
+            display: inline-block;
+            width: 50px;
+            height: 2px;
+            background-color: var(--brass-text);
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        .subsection-title {
+            font-size: 18px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .subsection-text {
+            font-size: 14px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .brass-frame {
+            border: 3px solid var(--gold-accent);
+            border-radius: 5px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #434343 0%, #000000 100%); 
+        }
+
+        .image-box {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            min-height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-box img, .image-box video {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+
+        /* SPESIFIK UNTUK VIDEO VERTIKAL 9:16 (Sosmed) */
+        .vertical-video-box {
+            width: 100%;
+            height: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+        }
+        
+        .vertical-video-box video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* KELAS KHUSUS UNTUK RASIO 16:9 (Public Speaking & 3D Model) */
+        .ratio-16-9 {
+            width: 100%;
+            height: auto !important; 
+            aspect-ratio: 16 / 9;
+        }
+
+        .content-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .content-grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .content-grid-3 { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 768px) {
+            .content-grid-2, .content-grid-3 { grid-template-columns: 1fr; }
+        }
+
+        .content-card-brass {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 5px solid var(--gold-accent);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.5);
+            border: 2px solid #555;
+            color: #333;
+            padding: 8px 15px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .action-btn:hover {
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        .gold-btn {
+            background: linear-gradient(45deg, #d4af37, #b59410);
+            border: none;
+            color: #1a202c;
+            padding: 10px 24px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(212, 175, 55, 0.4);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .gold-btn:hover { transform: scale(1.05); box-shadow: 0 6px 15px rgba(212, 175, 55, 0.6); }
+
+        .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 15px; }
+        .tag { background: rgba(0,0,0,0.1); border: 1px solid #94a3b8; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; color: #475569; }
+
+        .decking-card {
+            background: rgba(255, 255, 255, 0.3);
+            border: 3px solid var(--gold-accent);
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .decking-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .project-label {
+            font-size: 12px;
+            color: var(--brass-text);
+            font-weight: bold;
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .sidebar-medals {
+            position: fixed;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 10;
+        }
+
+        @media (max-width: 1200px) {
+            .sidebar-medals {
+                position: static;
+                transform: none;
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin: 20px auto;
+                padding: 0 20px;
+                width: 100%;
+            }
+        }
+
+        .medal-btn {
+            background-color: rgba(10, 10, 10, 0.9);
+            border: 3px solid;
+            border-image: linear-gradient(45deg, #b59410 0%, #d4af37 50%, #b59410 100%) 1;
+            color: #e0e0e0;
+            padding: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 150px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+            text-transform: uppercase;
+        }
+
+        .medal-btn:hover {
+            background-color: rgba(212, 175, 55, 0.3);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+        }
+
+        .main-footer {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px 50px;
+            border-top: 4px solid;
+            border-image: linear-gradient(45deg, #b59410 0%, #d4af37 50%, #b59410 100%) 1;
+            background-color: rgba(10, 10, 10, 0.95);
+            z-index: 10;
+            margin-top: auto;
+            color: #cbd5e1;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            color: var(--gold-accent);
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid var(--gold-accent);
+            padding: 10px 15px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            color: #fff;
+        }
+
+        .footer-cta-btn {
+            background-color: transparent;
+            border: 4px solid var(--gold-accent);
+            color: var(--gold-accent);
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+
+        .footer-cta-btn:hover {
+            background-color: var(--gold-accent);
+            color: #1a1a1a;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="site-wrapper">
+
+        <div class="gears-background">
+            <div class="gear" style="width: 150px; height: 150px; top: 100px; left: 50px; animation-duration: 20s;"></div>
+            <div class="gear" style="width: 100px; height: 100px; bottom: 100px; right: 50px; animation-duration: 15s;"></div>
+        </div>
+
+        <header class="site-header">
+            <nav class="nav-bar">
+                <button class="nav-btn active" onclick="showPage('home')">HOME</button>
+                <button class="nav-btn" onclick="showPage('about')">ABOUT ME</button>
+                <button class="nav-btn" onclick="showPage('sosmed')">SOSMED</button>
+                <button class="nav-btn" onclick="showPage('public-speaking')">PUBLIC SPEAKING</button>
+                <button class="nav-btn" onclick="showPage('3d-model')">3D MODEL</button>
+                <button class="nav-btn" onclick="showPage('decking')">DECKING</button>
+                <button class="nav-btn" onclick="showPage('contact')">CONTACT</button>
+            </nav>
+        </header>
+
+        <main class="main-content">
+
+            <div id="home" class="content-page active">
+                <div style="text-align: center; padding: 100px 0;">
+                    <h1 class="section-title" style="font-size: 60px;">Welcome to My Portfolio</h1>
+                    <div class="section-subtitle">MICHELLE CARISSA PURNAMA</div>
+                    <div class="image-box brass-frame" style="width: 250px; height: 250px; border-radius: 50%; margin: 30px auto;">
+                        <img src="foto profil.jpg.jpg" alt="Michelle portrait">
+                    </div>
+                    <p class="subsection-text" style="max-width: 600px; margin: 0 auto;">An analytical Industrial Engineering student at UGM’s International Undergraduate Program. Through academic and non-academic experience, I developed an interest in Sales and Marketing. Skilled in team-working & building and relentless in pursuing knowledge.</p>
+                </div>
+            </div>
+
+            <div id="about" class="content-page">
+                <h1 class="section-title">ABOUT ME</h1>
+                <div class="section-subtitle">Bio & Experience</div>
+                <div class="grid-2">
+                    <div class="content-card-brass">
+                        <h3>Industrial Engineering Student at UGM</h3>
+                        <p>An analytical <strong>Industrial Engineering student at Universitas Gadjah Mada’s (UGM)</strong> International Undergraduate Program.</p>
+                        <p>Through academic and non-academic experience, I developed an interest in <strong>Sales and Marketing</strong>. Skilled in team-working & building and relentless in pursuing knowledge.</p>
+                    </div>
+                    <div class="content-card-brass">
+                        <h3>Experiences</h3>
+                        <ul>
+                            <li><strong>HC Manager</strong> at StudentsCatalyst</li>
+                            <li><strong>Co-Director of Client Engagement</strong> ShARE UGM Batch 6</li>
+                            <li><strong>Internnet Mentee</strong> Wave 9</li>
+                            <li><strong>Learning Manager</strong> ADL x ShARE Mentorship</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sosmed" class="content-page">
+                <h1 class="section-title">SOCIAL MEDIA & CONTENTS</h1>
+                <div class="section-subtitle">Engagement & Creativity</div>
+                
+                <div class="content-grid-2">
+                    <div class="video-container">
+                        <h3 class="subsection-title">VIDEO EDITOR</h3>
+                        <p class="subsection-text">Dynamic edited high-paced Reels video description.</p>
+                        <div class="image-box brass-frame" id="reelsVideoContainer" style="height: 350px;">
+                            <video autoplay loop muted playsinline>
+                                <source src="video1.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <p class="subsection-text" style="margin-top: 10px;">IE IUP Campus Tour</p>
+                        <div class="tags-container">
+                            <span class="tag">Video Editor</span>
+                            <span class="tag">Content Director</span>
+                            <span class="tag">Figma</span>
+                            <span class="tag">CapCut</span>
+                        </div>
+                    </div>
+
+                    <div class="photos-container">
+                        <h3 class="subsection-title">CREATIVE CONTENTS</h3>
+                        <p class="subsection-text">Showcasing vertical video content and graphic editing projects.</p>
+                        <div class="content-grid-2 visual-panels" style="align-items: center;">
+                            <div class="visual-panel brass-frame vertical-video-box">
+                                <video autoplay loop muted playsinline>
+                                    <source src="0330.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                            <div class="visual-panel image-box brass-frame" style="height: 250px;">
+                                <img src="indus.png" alt="StudentsCatalyst Recruitment Post" class="visual-image">
+                            </div>
+                        </div>
+                        <p class="subsection-text" style="margin-top: 10px; text-align: center;"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="public-speaking" class="content-page">
+                <h1 class="section-title">PUBLIC SPEAKING</h1>
+                <div class="section-subtitle">Persuasion & Guidance</div>
+                <div class="grid-2">
+                    <div class="speaking-panel">
+                        <h3 class="subsection-title">SPEAKER</h3>
+                        <div class="image-box brass-frame ratio-16-9">
+                            <img src="sertif.png" alt="Michelle speaking on stage">
+                        </div>
+                        <p class="subsection-text" style="margin-top: 10px;">Leading and presenting sessions for diverse audiences, demonstrating guidance and clear pacing.</p>
+                        <p class="subsection-text">YACARANDA UGM WORKSHOP</p>
+                        <div class="action-buttons">
+                            <button class="action-btn" onclick="window.open('https://wa.me/6288227790306', '_blank')">REQUEST TO SPEAK</button>
+                        </div>
+                    </div>
+                    <div class="mc-panel">
+                        <h3 class="subsection-title">MC & MODERATOR</h3>
+                        <div class="image-box brass-frame ratio-16-9">
+                            <img src="speaker.png" alt="MC at workshop">
+                        </div>
+                        <p class="subsection-text" style="margin-top: 10px;">Moderating workshops with professional clarity and audience engagement.</p>
+                        <p class="subsection-text">MC at StudentsCatalyst workshop: 27 smalles Catalyst workshop</p>
+                        <div class="action-buttons">
+                            <button class="action-btn" onclick="window.open('https://wa.me/6288227790306', '_blank')">REQUEST TO SPEAK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="3d-model" class="content-page">
+                <h1 class="section-title">3D MODELLING & MECHANICAL DESIGN</h1>
+                <div class="section-subtitle">Precision & Product Modeling</div>
+                <div class="grid-2">
+                    <div class="technical-drafting">
+                        <h3 class="subsection-title">TECHNICAL DRAFTING (AUTO CAD)</h3>
+                        <p class="subsection-text">Showcasing precise 2D technical drafting, detailed blueprints, and orthographic projections, focusing on industrial engineering and fabrication.</p>
+                        <div class="visual-panels">
+                            <div class="visual-panel blueprint image-box brass-frame ratio-16-9">
+                                <img src="AUTOCAD.png" alt="Technical Drawing 1" class="visual-image">
+                            </div>
+                        </div>
+                        <p class="subsection-text" style="margin-top: 10px;">Detailed structural blueprints</p>
+                    </div>
+
+                    <div class="product-modeling">
+                        <h3 class="subsection-title">PRODUCT MODELING (FUSION 360)</h3>
+                        <p class="subsection-text">Transforming raw concepts to engaging contents with photorealistic rendering, material application, and assembly schematics.</p>
+                        <div class="visual-panels">
+                            <div class="visual-panel main-render image-box brass-frame ratio-16-9" id="3dRenderContainer">
+                                <video autoplay loop muted playsinline>
+                                    <source src="catur.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <p class="subsection-text" style="margin-top: 10px;">Intricate chess set render and texture work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="decking" class="content-page">
+                <h1 class="section-title">BUSINESS DECKING & STRATEGY</h1>
+                <div class="section-subtitle">Visualization & Recommendations</div>
+                <p class="subsection-text" style="text-align: center; color: var(--brass-text);">PHOTOS: presentation slide thumbnails.</p>
+                <div class="content-grid-3 visual-panels">
+                    <div class="visual-panel decking-card">
+                        <p class="decking-title">FINANCIAL FORECAST VISUALIZATION</p>
+                        <div class="image-box brass-frame" style="height: 200px; margin-bottom: 10px;">
+                            <img src="deck1.png" alt="Slide 1 Financial Forecast Visualization">
+                        </div>
+                        <p class="project-label"></p>
+                    </div>
+                    <div class="visual-panel decking-card">
+                        <p class="decking-title">MARKET COMPETITIVE LANDSCAPE</p>
+                        <div class="image-box brass-frame" style="height: 200px; margin-bottom: 10px;">
+                            <img src="deck2.png" alt="Slide 2 Market Competitive Landscape radar chart">
+                        </div>
+                        <p class="project-label"></p>
+                    </div>
+                    <div class="visual-panel decking-card">
+                        <p class="decking-title">CASE COMPETITION: STRATEGIC RECOMMENDATIONS</p>
+                        <div class="image-box brass-frame" style="height: 200px; margin-bottom: 10px;">
+                            <img src="deck3.png" alt="Slide 3 Case Competition: Strategic Recommendations flow chart">
+                        </div>
+                        <p class="project-label"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contact" class="content-page">
+                <div style="text-align: center; padding: 80px 0;">
+                    <h1 class="section-title" style="font-size: 50px;">LET'S WORK TOGETHER</h1>
+                    <div class="section-divider"></div>
+                    <p style="font-size: 20px; font-weight: bold; color: #8a6d00;">MICHELLE CARISSA PURNAMA</p>
+                    <div style="margin: 30px 0;">
+                        <p style="font-size: 18px; margin: 10px 0;">📞 +62 882-2279-0306</p>
+                        <p style="font-size: 18px; margin: 10px 0;">✉️ carissamichelle9@gmail.com</p>
+                        <p style="font-size: 18px; margin: 10px 0;">📱 @michelle.carissa.p</p>
+                    </div>
+                    <button class="gold-btn" style="font-size: 18px; padding: 15px 40px;" onclick="window.location.href='mailto:carissamichelle9@gmail.com'">SEND AN EMAIL NOW</button>
+                </div>
+            </div>
+
+        </main>
+
+        <aside class="sidebar-medals">
+            <button class="medal-btn" onclick="window.open('cvrissa.pdf', '_blank')">DOWNLOAD CV</button>
+            <button class="medal-btn" onclick="window.location.href='mailto:carissamichelle9@gmail.com?subject=Job Inquiry for Michelle'">HIRE ME</button>
+        </aside>
+
+        <footer class="main-footer">
+            <div class="social-icons">
+                <a href="https://www.instagram.com/michelle.carissa.p/" target="_blank" class="social-icon">IG</a>
+                <a href="https://www.linkedin.com/in/michellecarissapurnama/" target="_blank" class="social-icon">IN</a>
+                <a href="mailto:carissamichelle9@gmail.com" class="social-icon">✉</a>
+            </div>
+            <button class="footer-cta-btn" onclick="window.open('https://wa.me/6288227790306', '_blank')">TOGETHER LET'S WORK ></button>
+        </footer>
+    </div>
+
+    <script>
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.content-page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            const btns = document.querySelectorAll('.nav-btn');
+            btns.forEach(btn => btn.classList.remove('active'));
+            
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+            }
+            
+            btns.forEach(btn => {
+                if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(pageId)) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
